@@ -35,7 +35,7 @@ class composer(
       cwd         => $tmp_path,
       require     => [
         Package['wget'],
-        Augeas['whitelist_phar', 'allow_url_fopen'], ],
+        Augeas['allow_url_fopen'], ],
       creates     => "$tmp_path/composer.phar",
       logoutput   => $logoutput,
     }
@@ -62,7 +62,7 @@ class composer(
   exec { 'update_composer':
     command     => "$target_dir/$composer_file self-update",
     require     => File["$target_dir/$composer_file"],
-  }
+  }	
 
   # set /etc/php5/cli/php.ini/PHP/allow_url_fopen = On
   augeas{ 'allow_url_fopen':
