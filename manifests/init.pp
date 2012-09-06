@@ -21,7 +21,7 @@ class composer(
       cwd         => $tmp_path,
       require     => [
         Package['curl', $php_package],
-        Augeas['whitelist_phar', 'allow_url_fopen'], ],
+        Augeas['allow_url_fopen'], ],
       creates     => "$tmp_path/composer.phar",
       logoutput   => $logoutput,
     }
