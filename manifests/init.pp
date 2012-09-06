@@ -20,8 +20,7 @@ class composer(
       command     => 'curl -s http://getcomposer.org/installer | php',
       cwd         => $tmp_path,
       require     => [
-        Package['curl', $php_package],
-        Augeas['allow_url_fopen'], ],
+        Package['curl', $php_package] ],
       creates     => "$tmp_path/composer.phar",
       logoutput   => $logoutput,
     }
@@ -34,8 +33,7 @@ class composer(
       command     => 'wget http://getcomposer.org/composer.phar -O composer.phar',
       cwd         => $tmp_path,
       require     => [
-        Package['wget'],
-        Augeas['allow_url_fopen'], ],
+        Package['wget'] ],
       creates     => "$tmp_path/composer.phar",
       logoutput   => $logoutput,
     }
@@ -63,11 +61,4 @@ class composer(
     command     => "$target_dir/$composer_file self-update",
     require     => File["$target_dir/$composer_file"],
   }	
-
-  # set /etc/php5/cli/php.ini/PHP/allow_url_fopen = On
-  augeas{ 'allow_url_fopen':
-    context     => '/files/etc/php5/cli/php.ini/PHP',
-    changes     => 'set allow_url_fopen On',
-    require     => Package[$php_package],
-  }
 }
