@@ -7,7 +7,7 @@ class composer(
   include augeas
 
   $php_package     = 'php-cli'
-  $tmp_path        = '/home/vagrant'
+  $tmp_path        = '/tmp'
 
   package { $php_package:ensure => present, }
 
