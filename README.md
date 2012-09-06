@@ -1,5 +1,7 @@
 # Puppet module to install composer
 
+This branch is compatible with CentOS (tested with 6.3). Ideally OS detection should be added.
+
 ## Description
 
 install php composer - from http://getcomposer.org/ with puppet-composer module
