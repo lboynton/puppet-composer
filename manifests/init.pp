@@ -52,7 +52,6 @@ class composer(
     ensure      => present,
     source      => "$tmp_path/composer.phar",
     require     => [ Exec['download_composer'], File[$target_dir], ],
-    group       => 'staff',
     mode        => '0755',
   }
 
